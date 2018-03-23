@@ -1,0 +1,47 @@
+---
+title: "Select 함수 연습"
+author: "LEESUJAE" 
+Ref: R for Data Scientist pp.51~54
+date: "2018년 3월 23일"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+###1.nycflights13 라이브러리에 담겨 있는 nycflights 데이터 불러와서 구조확인
+```{r}
+library(nycflights13)
+library(dplyr)
+c(str(flights), dim(flights))
+```
+
+###2. year, month, day 컬럼 선택하기
+```{r}
+select(flights, year, month, day)
+
+```
+
+###3. 년도와 일 컬럼선택하기(inclusive)
+```{r }
+select(flights, year:day)
+```
+
+###4.년도와 일 컬럼 제외하고 선택하기(exclusive)
+```{r}
+select(flights, -(year:day))
+```
+
+###5.select 함수와 everything() 함수를 결합하면 원하는 컬럼을 맨앞으로 두고 정렬 가능 
+```{r}
+select(flights, time_hour, air_time, everything())
+```
+
+
+###6.select 함수와 contain 함수를 같이 사용하여 특정 값이 포함된 컬럼 선택
+```{r}
+select(flights, contains("TIME"))
+```
+
+### ref: R for data Scientist pp.51~54
